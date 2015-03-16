@@ -14,6 +14,8 @@
 		DB7E8FAB1AB6800000FF9E5F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB7E8FAA1AB6800000FF9E5F /* Images.xcassets */; };
 		DB7E8FAE1AB6800000FF9E5F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB7E8FAC1AB6800000FF9E5F /* LaunchScreen.xib */; };
 		DB7E8FBA1AB6800000FF9E5F /* SimpleAPICallExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E8FB91AB6800000FF9E5F /* SimpleAPICallExampleTests.m */; };
+		DB7E8FC71AB6808500FF9E5F /* APIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E8FC61AB6808500FF9E5F /* APIHandler.m */; };
+		DB7E8FCD1AB681FA00FF9E5F /* SimpleJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E8FCC1AB681FA00FF9E5F /* SimpleJSONParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,12 @@
 		DB7E8FB31AB6800000FF9E5F /* SimpleAPICallExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleAPICallExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB7E8FB81AB6800000FF9E5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB7E8FB91AB6800000FF9E5F /* SimpleAPICallExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleAPICallExampleTests.m; sourceTree = "<group>"; };
+		DB7E8FC51AB6808500FF9E5F /* APIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIHandler.h; sourceTree = "<group>"; };
+		DB7E8FC61AB6808500FF9E5F /* APIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIHandler.m; sourceTree = "<group>"; };
+		DB7E8FC81AB680FD00FF9E5F /* APIRequestBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIRequestBuilder.h; sourceTree = "<group>"; };
+		DB7E8FC91AB6814C00FF9E5F /* APIResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIResponseParser.h; sourceTree = "<group>"; };
+		DB7E8FCB1AB681FA00FF9E5F /* SimpleJSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleJSONParser.h; sourceTree = "<group>"; };
+		DB7E8FCC1AB681FA00FF9E5F /* SimpleJSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleJSONParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +89,8 @@
 		DB7E8F9C1AB6800000FF9E5F /* SimpleAPICallExample */ = {
 			isa = PBXGroup;
 			children = (
+				DB7E8FC31AB6804100FF9E5F /* APIHandler */,
+				DB7E8FC41AB6805700FF9E5F /* Samples */,
 				DB7E8FA11AB6800000FF9E5F /* AppDelegate.h */,
 				DB7E8FA21AB6800000FF9E5F /* AppDelegate.m */,
 				DB7E8FA41AB6800000FF9E5F /* ViewController.h */,
@@ -117,6 +127,34 @@
 				DB7E8FB81AB6800000FF9E5F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DB7E8FC31AB6804100FF9E5F /* APIHandler */ = {
+			isa = PBXGroup;
+			children = (
+				DB7E8FCA1AB681D200FF9E5F /* SimpleParsers */,
+				DB7E8FC51AB6808500FF9E5F /* APIHandler.h */,
+				DB7E8FC61AB6808500FF9E5F /* APIHandler.m */,
+				DB7E8FC81AB680FD00FF9E5F /* APIRequestBuilder.h */,
+				DB7E8FC91AB6814C00FF9E5F /* APIResponseParser.h */,
+			);
+			path = APIHandler;
+			sourceTree = "<group>";
+		};
+		DB7E8FC41AB6805700FF9E5F /* Samples */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Samples;
+			sourceTree = "<group>";
+		};
+		DB7E8FCA1AB681D200FF9E5F /* SimpleParsers */ = {
+			isa = PBXGroup;
+			children = (
+				DB7E8FCB1AB681FA00FF9E5F /* SimpleJSONParser.h */,
+				DB7E8FCC1AB681FA00FF9E5F /* SimpleJSONParser.m */,
+			);
+			path = SimpleParsers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +257,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB7E8FCD1AB681FA00FF9E5F /* SimpleJSONParser.m in Sources */,
 				DB7E8FA61AB6800000FF9E5F /* ViewController.m in Sources */,
 				DB7E8FA31AB6800000FF9E5F /* AppDelegate.m in Sources */,
 				DB7E8FA01AB6800000FF9E5F /* main.m in Sources */,
+				DB7E8FC71AB6808500FF9E5F /* APIHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
