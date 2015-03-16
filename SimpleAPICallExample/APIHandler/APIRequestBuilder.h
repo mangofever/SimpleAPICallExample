@@ -8,8 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol APIRequestBuilder <NSObject>
+typedef NS_ENUM(NSInteger, APIRequestMethod){
+    APIRequestMethodGET,
+    APIRequestMethodPOST,
+    APIRequestMethodPUT,
+    APIRequestMethodDELETE
+};
 
-- (NSURLRequest *)buildAPIRequestWithKey:(NSString *)apiKey;
+@interface APIRequestBuilder : NSObject
+
+@property (nonatomic) NSTimeInterval timeoutInterval;
+
+- (NSURLRequest *)buildAPIRequestWithURLString:(NSString *)urlString method:(APIRequestMethod)method;
 
 @end

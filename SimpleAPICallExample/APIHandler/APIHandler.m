@@ -21,9 +21,11 @@
     return instance;
 }
 
-- (void)requestAPIWithKey:(NSString *)apiKey completionHandler:(void (^)(BOOL isSuccess, id responseResult, NSError* error))resultHandler {
-    [self.requestQueue cancelAllOperations];
-    NSURLRequest *request = [self.requestBuilder buildAPIRequestWithKey:apiKey];
+- (void)sendRequest:(NSURLRequest *)request identifier:(NSString *)identifier completionHandler:(void (^)(BOOL isSuccess, id responseResult, NSError* error))resultHandler {
+    
+    if (self.cancelPolicy == APIHandlerCancelPolicyAll) {
+        [self.requestQueue cancelAllOperations];
+    }
     
     [NSURLConnection sendAsynchronousRequest:request queue:self.requestQueue completionHandler:^(NSURLResponse *response, NSData *rawData, NSError *connectionError) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -42,7 +44,9 @@
                         }
                     }
                 } else {
-                    resultHandler(YES, rawData, nil);
+                    if (resultHandler) {
+                        resultHandler(YES, rawData, nil);
+                    }
                 }
             } else {
                 if (resultHandler) {
