@@ -17,6 +17,8 @@
 		DB7E8FC71AB6808500FF9E5F /* APIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E8FC61AB6808500FF9E5F /* APIHandler.m */; };
 		DB7E8FCD1AB681FA00FF9E5F /* SimpleJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E8FCC1AB681FA00FF9E5F /* SimpleJSONParser.m */; };
 		DB7E8FD01AB6B7C100FF9E5F /* APIRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E8FCF1AB6B7C100FF9E5F /* APIRequestBuilder.m */; };
+		DB7E8FD71AB6D1A000FF9E5F /* SimpleAPIRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E8FD61AB6D1A000FF9E5F /* SimpleAPIRequester.m */; };
+		DB7E8FDA1AB6DBD100FF9E5F /* SampleAPIBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E8FD91AB6DBD100FF9E5F /* SampleAPIBuilder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,11 @@
 		DB7E8FCC1AB681FA00FF9E5F /* SimpleJSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleJSONParser.m; sourceTree = "<group>"; };
 		DB7E8FCE1AB6B7C100FF9E5F /* APIRequestBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIRequestBuilder.h; sourceTree = "<group>"; };
 		DB7E8FCF1AB6B7C100FF9E5F /* APIRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIRequestBuilder.m; sourceTree = "<group>"; };
+		DB7E8FD41AB6D18C00FF9E5F /* APIRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIRequester.h; sourceTree = "<group>"; };
+		DB7E8FD51AB6D1A000FF9E5F /* SimpleAPIRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleAPIRequester.h; sourceTree = "<group>"; };
+		DB7E8FD61AB6D1A000FF9E5F /* SimpleAPIRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleAPIRequester.m; sourceTree = "<group>"; };
+		DB7E8FD81AB6DBD100FF9E5F /* SampleAPIBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleAPIBuilder.h; sourceTree = "<group>"; };
+		DB7E8FD91AB6DBD100FF9E5F /* SampleAPIBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleAPIBuilder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +147,9 @@
 				DB7E8FC91AB6814C00FF9E5F /* APIResponseParser.h */,
 				DB7E8FCE1AB6B7C100FF9E5F /* APIRequestBuilder.h */,
 				DB7E8FCF1AB6B7C100FF9E5F /* APIRequestBuilder.m */,
+				DB7E8FD41AB6D18C00FF9E5F /* APIRequester.h */,
+				DB7E8FD51AB6D1A000FF9E5F /* SimpleAPIRequester.h */,
+				DB7E8FD61AB6D1A000FF9E5F /* SimpleAPIRequester.m */,
 			);
 			path = APIHandler;
 			sourceTree = "<group>";
@@ -147,6 +157,8 @@
 		DB7E8FC41AB6805700FF9E5F /* Samples */ = {
 			isa = PBXGroup;
 			children = (
+				DB7E8FD81AB6DBD100FF9E5F /* SampleAPIBuilder.h */,
+				DB7E8FD91AB6DBD100FF9E5F /* SampleAPIBuilder.m */,
 			);
 			path = Samples;
 			sourceTree = "<group>";
@@ -261,6 +273,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB7E8FCD1AB681FA00FF9E5F /* SimpleJSONParser.m in Sources */,
+				DB7E8FD71AB6D1A000FF9E5F /* SimpleAPIRequester.m in Sources */,
+				DB7E8FDA1AB6DBD100FF9E5F /* SampleAPIBuilder.m in Sources */,
 				DB7E8FA61AB6800000FF9E5F /* ViewController.m in Sources */,
 				DB7E8FD01AB6B7C100FF9E5F /* APIRequestBuilder.m in Sources */,
 				DB7E8FA31AB6800000FF9E5F /* AppDelegate.m in Sources */,

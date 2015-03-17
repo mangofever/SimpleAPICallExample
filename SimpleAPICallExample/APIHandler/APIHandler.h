@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "APIRequestBuilder.h"
 #import "APIResponseParser.h"
+#import "APIRequester.h"
 
 typedef NS_ENUM(NSInteger, APIHandlerCancelPolicy){
     APIHandlerCancelPolicyNever,
@@ -19,8 +20,8 @@ typedef NS_ENUM(NSInteger, APIHandlerCancelPolicy){
 
 @interface APIHandler : NSObject
 
-@property (nonatomic, strong) NSOperationQueue *requestQueue;
 @property (nonatomic, strong) id<APIResponseParser> responseParser;
+@property (nonatomic, strong) id<APIRequester> apiRequester;
 @property (nonatomic) APIHandlerCancelPolicy cancelPolicy;
 
 + (APIHandler *)defaultAPIHandler;

@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "SampleAPIBuilder.h"
+#import "APIHandler.h"
 
 @interface ViewController ()
 
@@ -16,7 +18,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    NSURLRequest *request = [SampleAPIBuilder buildAPI];
+    
+    [[APIHandler defaultAPIHandler] sendRequest:request identifier:@"temp" completionHandler:^(BOOL isSuccess, NSDictionary *responseResult, NSError *error) {
+        NSLog(@">>>%@",responseResult.description);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
