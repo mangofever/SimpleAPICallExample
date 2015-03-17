@@ -8,7 +8,6 @@
 
 #import "SampleAPIBuilder.h"
 
-#define QualsonAPIServer @"http://absolute-api.elasticbeanstalk.com/"
 #define RequestTimeout 10
 
 @interface NSURL (URLEncodeSupport)

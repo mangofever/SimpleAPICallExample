@@ -7,25 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "APIRequestBuilder.h"
 #import "APIResponseParser.h"
-#import "APIRequester.h"
+#import "SimpleAPIRequest.h"
 
 typedef NS_ENUM(NSInteger, APIHandlerCancelPolicy){
-    APIHandlerCancelPolicyNever,
-    APIHandlerCancelPolicySameURL,
-    APIHandlerCancelPolicySameIdentifier,
     APIHandlerCancelPolicyAll,
+    APIHandlerCancelPolicySameRequestOnly
 };
 
 @interface APIHandler : NSObject
 
-@property (nonatomic, strong) id<APIResponseParser> responseParser;
-@property (nonatomic, strong) id<APIRequester> apiRequester;
 @property (nonatomic) APIHandlerCancelPolicy cancelPolicy;
+@property (nonatomic) NSMutableDictionary *apiRequests;
 
 + (APIHandler *)defaultAPIHandler;
 
-- (void)sendRequest:(NSURLRequest *)request identifier:(NSString *)identifier completionHandler:(void (^)(BOOL isSuccess, id responseResult, NSError* error))resultHandler;
+- (void)sendAPIRequest:(SimpleAPIRequest *)apiRequest completionHandler:(void (^)(BOOL isSuccess, id responseResult, NSError* error))resultHandler;
+- (void)cancelIdenticalToAPIRequest:(SimpleAPIRequest *)apiRequest;
 
 @end

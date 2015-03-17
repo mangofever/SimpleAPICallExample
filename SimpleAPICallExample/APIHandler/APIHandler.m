@@ -8,7 +8,7 @@
 
 #import "APIHandler.h"
 #import "SimpleJSONParser.h"
-#import "SimpleAPIRequester.h"
+#import "SimpleAPIRequest.h"
 
 @implementation APIHandler
 
@@ -17,39 +17,41 @@
     static APIHandler *instance;
     dispatch_once(&once, ^{
         instance = [[APIHandler alloc] init];
-        instance.responseParser = [[SimpleJSONParser alloc] init];
-        instance.apiRequester = [[SimpleAPIRequester alloc] init];
+        instance.apiRequests = [[NSMutableDictionary alloc] init];
+        instance.cancelPolicy = APIHandlerCancelPolicyAll;
     });
     return instance;
 }
 
-- (void)sendRequest:(NSURLRequest *)request identifier:(NSString *)identifier completionHandler:(void (^)(BOOL isSuccess, id responseResult, NSError* error))resultHandler {
-    [self.apiRequester sendRequest:request completion:^(NSURLResponse *response, NSData *rawData, NSError *connectionError) {
-        if (rawData && !connectionError) {
-            
-            if (self.responseParser) {
-                NSError *parsingError = nil;
-                id parsedResult = [self.responseParser parseResponseData:rawData error:&parsingError];
-                if (parsingError || (parsedResult == nil)) {
-                    if (resultHandler) {
-                        resultHandler(NO, nil, parsingError);
-                    }
-                } else {
-                    if (resultHandler) {
-                        resultHandler(YES, parsedResult, nil);
-                    }
-                }
-            } else {
-                if (resultHandler) {
-                    resultHandler(YES, rawData, nil);
-                }
-            }
-        } else {
-            if (resultHandler) {
-                resultHandler(NO, nil, connectionError);
-            }
+- (void)sendAPIRequest:(SimpleAPIRequest *)apiRequest completionHandler:(void (^)(BOOL, id, NSError *))resultHandler {
+    [self addRequest:apiRequest];
+    
+    [apiRequest startWithCompletion:^(BOOL isSuccess, id parsedResult, NSError *error) {
+        [self.apiRequests removeObjectForKey:apiRequest.identifier];
+        if (resultHandler) {
+            resultHandler(isSuccess, parsedResult, error);
         }
     }];
 }
+
+- (void)cancelIdenticalToAPIRequest:(SimpleAPIRequest *)apiRequest {
+    SimpleAPIRequest *existingRequest = [self.apiRequests objectForKey:apiRequest.identifier];
+    [existingRequest cancel];
+    [self.apiRequests removeObjectForKey:apiRequest.identifier];
+}
+
+- (void)addRequest:(SimpleAPIRequest *)request {
+    if (self.cancelPolicy == APIHandlerCancelPolicyAll) {
+        for (SimpleAPIRequest *existingRequest in self.apiRequests.allValues) {
+            [existingRequest cancel];
+        }
+        [self.apiRequests removeAllObjects];
+    } else if (self.cancelPolicy == APIHandlerCancelPolicySameRequestOnly) {
+        [self cancelIdenticalToAPIRequest:request];
+    }
+    
+    [self.apiRequests setObject:request forKey:request.identifier];
+}
+
 
 @end

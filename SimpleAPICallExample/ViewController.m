@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "SampleAPIBuilder.h"
 #import "APIHandler.h"
+#import "SimpleAPIRequest.h"
+#import "SimpleJSONParser.h"
 
 @interface ViewController ()
 
@@ -20,8 +22,11 @@
     [super viewDidLoad];
     NSURLRequest *request = [SampleAPIBuilder buildAPI];
     
-    [[APIHandler defaultAPIHandler] sendRequest:request identifier:@"temp" completionHandler:^(BOOL isSuccess, NSDictionary *responseResult, NSError *error) {
-        NSLog(@">>>%@",responseResult.description);
+    SimpleAPIRequest *apiRequest = [[SimpleAPIRequest alloc] initWithRequest:request parse:nil];
+    apiRequest.responseParser = [[SimpleJSONParser alloc] init];
+    
+    [[APIHandler defaultAPIHandler] sendAPIRequest:apiRequest completionHandler:^(BOOL isSuccess, NSDictionary *responseResult, NSError *error) {
+        NSLog(@"\nParsed JSON\n%@",responseResult.description);
     }];
 }
 
