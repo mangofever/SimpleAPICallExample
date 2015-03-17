@@ -7,6 +7,7 @@
 //
 
 #import "SampleAPIBuilder.h"
+#import "SimpleJSONParser.h"
 
 #define RequestTimeout 10
 
@@ -29,13 +30,16 @@
 
 @implementation SampleAPIBuilder
 
-+ (NSURLRequest *)buildAPI {
++ (SimpleAPIRequest *)buildAPI {
     NSURL *url = [NSURL encodedURLWithString:@"http://coinabul.com/api.php"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:RequestTimeout];
     [request setHTTPMethod:@"GET"];
     
-    return request;
+    SimpleAPIRequest *apiRequest = [[SimpleAPIRequest alloc] initWithRequest:request parse:nil];
+    apiRequest.responseParser = [[SimpleJSONParser alloc] init];
+    
+    return apiRequest;
 }
 
 @end

@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SimpleAPIRequest.h"
 
 @interface SampleAPIBuilder : NSObject
 
-+ (NSURLRequest *)buildAPI;
++ (SimpleAPIRequest *)buildAPI;
 
 @end

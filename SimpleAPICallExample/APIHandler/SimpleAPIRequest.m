@@ -1,5 +1,5 @@
 //
-//  SimpleAPIRequester.m
+//  SimpleAPIRequest.m
 //  SimpleAPICallExample
 //
 //  Created by Mango on 2015. 3. 16..

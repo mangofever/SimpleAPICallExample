@@ -1,5 +1,5 @@
 //
-//  SimpleAPIRequester.h
+//  SimpleAPIRequest.h
 //  SimpleAPICallExample
 //
 //  Created by Mango on 2015. 3. 16..

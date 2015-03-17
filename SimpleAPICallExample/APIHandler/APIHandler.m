@@ -37,7 +37,7 @@
 - (void)cancelIdenticalToAPIRequest:(SimpleAPIRequest *)apiRequest {
     SimpleAPIRequest *existingRequest = [self.apiRequests objectForKey:apiRequest.identifier];
     [existingRequest cancel];
-    [self.apiRequests removeObjectForKey:apiRequest.identifier];
+    [self.apiRequests removeObjectForKey:existingRequest.identifier];
 }
 
 - (void)addRequest:(SimpleAPIRequest *)request {
